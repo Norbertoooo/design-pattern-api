@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: design-pattern-api
+  profiles:
+    active: dev
+  jpa:
+    open-in-view: false
+    
+server:
+  port: 8081
