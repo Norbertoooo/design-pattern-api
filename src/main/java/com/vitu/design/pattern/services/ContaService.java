@@ -1,7 +1,7 @@
 package com.vitu.design.pattern.services;
 
-import com.vitu.design.pattern.domain.Conta;
-import com.vitu.design.pattern.domain.Historico;
+import com.vitu.design.pattern.domain.onetomany.biderecional.Conta;
+import com.vitu.design.pattern.domain.onetomany.biderecional.Historico;
 import com.vitu.design.pattern.repository.ContaRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

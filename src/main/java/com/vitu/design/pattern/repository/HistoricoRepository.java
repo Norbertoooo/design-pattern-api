@@ -1,6 +1,6 @@
 package com.vitu.design.pattern.repository;
 
-import com.vitu.design.pattern.domain.Historico;
+import com.vitu.design.pattern.domain.onetomany.biderecional.Historico;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package com.vitu.design.pattern.web;
 
-import com.vitu.design.pattern.domain.Conta;
+import com.vitu.design.pattern.domain.onetomany.biderecional.Conta;
 import com.vitu.design.pattern.services.ContaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

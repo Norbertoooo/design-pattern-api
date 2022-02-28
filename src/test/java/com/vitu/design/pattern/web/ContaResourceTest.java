@@ -1,23 +1,18 @@
 package com.vitu.design.pattern.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vitu.design.pattern.domain.Conta;
-import com.vitu.design.pattern.domain.Historico;
-import com.vitu.design.pattern.repository.ContaRepository;
+import com.vitu.design.pattern.domain.onetomany.biderecional.Conta;
+import com.vitu.design.pattern.domain.onetomany.biderecional.Historico;
 import com.vitu.design.pattern.repository.HistoricoRepository;
-import com.vitu.design.pattern.services.ContaService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.nio.charset.StandardCharsets;
-import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.Matchers.hasSize;

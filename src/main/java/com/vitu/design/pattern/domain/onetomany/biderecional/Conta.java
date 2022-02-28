@@ -1,12 +1,13 @@
-package com.vitu.design.pattern.domain;
+package com.vitu.design.pattern.domain.onetomany.biderecional;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -15,11 +16,11 @@ import javax.persistence.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "historico")
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class Historico {
+@Table(name = "conta")
+public class Conta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,10 +30,9 @@ public class Historico {
     @Column(name = "nome")
     private String nome;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
-    @JoinColumn(name = "conta_id", foreignKey = @ForeignKey(name = "fk_historico_conta_id"))
+    @OneToMany(mappedBy = "conta", cascade = CascadeType.ALL)
+    @JsonIdentityReference
     @ToString.Exclude
-    private Conta conta;
+    private List<Historico> historico = new ArrayList<>();
 
 }
