@@ -21,4 +21,8 @@ public class Estrela {
     private Long id;
 
     private String nome;
+
+    private Character classe;
+
+    private String cor;
 }

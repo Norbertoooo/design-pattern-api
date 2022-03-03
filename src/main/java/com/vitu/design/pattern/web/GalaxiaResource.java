@@ -4,6 +4,8 @@ import com.vitu.design.pattern.domain.onetomany.biderecional.Conta;
 import com.vitu.design.pattern.domain.onetomany.unidirecional.Estrela;
 import com.vitu.design.pattern.domain.onetomany.unidirecional.Galaxia;
 import com.vitu.design.pattern.services.GalaxiaService;
+import com.vitu.design.pattern.web.dto.EstrelaDto;
+import com.vitu.design.pattern.web.mapper.EstrelaMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 public class GalaxiaResource {
 
     private final GalaxiaService galaxiaService;
+    private final EstrelaMapper estrelaMapper;
 
     @PostMapping
     public ResponseEntity<Galaxia> create(@RequestBody Galaxia galaxia) {
@@ -28,9 +31,9 @@ public class GalaxiaResource {
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<Galaxia> adicionarEstrela(@PathVariable Long id, @RequestBody Estrela estrela) {
-        log.info("Requisição para adicionar estrela: {} na galaxia de id: {}", estrela, id);
-        Galaxia CreatedGalaxia = galaxiaService.adicionarEstrela(id, estrela);
+    public ResponseEntity<Galaxia> adicionarEstrela(@PathVariable Long id, @RequestBody EstrelaDto estrelaDto) {
+        log.info("Requisição para adicionar estrela: {} na galaxia de id: {}", estrelaDto, id);
+        Galaxia CreatedGalaxia = galaxiaService.adicionarEstrela(id, estrelaMapper.toDomain(estrelaDto));
         log.info("{}", CreatedGalaxia);
         return ResponseEntity.status(CREATED).body(CreatedGalaxia);
     }
