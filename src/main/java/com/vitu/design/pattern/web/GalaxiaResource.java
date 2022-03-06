@@ -1,9 +1,7 @@
 package com.vitu.design.pattern.web;
 
-import com.vitu.design.pattern.domain.onetomany.biderecional.Conta;
-import com.vitu.design.pattern.domain.onetomany.unidirecional.Estrela;
 import com.vitu.design.pattern.domain.onetomany.unidirecional.Galaxia;
-import com.vitu.design.pattern.services.GalaxiaService;
+import com.vitu.design.pattern.service.GalaxiaService;
 import com.vitu.design.pattern.web.dto.EstrelaDto;
 import com.vitu.design.pattern.web.mapper.EstrelaMapper;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +21,7 @@ public class GalaxiaResource {
     private final EstrelaMapper estrelaMapper;
 
     @PostMapping
-    public ResponseEntity<Galaxia> create(@RequestBody Galaxia galaxia) {
+    public ResponseEntity<Galaxia> criar(@RequestBody Galaxia galaxia) {
         log.info("Requisição para criar nova galaxia: {}", galaxia);
         Galaxia CreatedGalaxia = galaxiaService.save(galaxia);
         log.info("{}", CreatedGalaxia);

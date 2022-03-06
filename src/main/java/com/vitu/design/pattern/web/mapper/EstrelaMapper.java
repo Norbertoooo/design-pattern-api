@@ -2,14 +2,22 @@ package com.vitu.design.pattern.web.mapper;
 
 import com.vitu.design.pattern.domain.onetomany.unidirecional.Estrela;
 import com.vitu.design.pattern.strategy.EstrelaCorStrategy;
-import com.vitu.design.pattern.strategy.impl.ClasseAStrategyImpl;
-import com.vitu.design.pattern.strategy.impl.ClasseGStrategyImpl;
-import com.vitu.design.pattern.strategy.impl.ClasseMStrategyImpl;
 import com.vitu.design.pattern.web.dto.EstrelaDto;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 @Component
 public class EstrelaMapper {
+
+    // spring automaticamente injeta todas as classes concretas do strategy sendo a key do map o nome da classe ou
+    // o nome passado no @component
+
+    private final Map<String, EstrelaCorStrategy> strategyMap;
+
+    public EstrelaMapper(Map<String, EstrelaCorStrategy> strategyMap) {
+        this.strategyMap = strategyMap;
+    }
 
     public Estrela toDomain(EstrelaDto estrelaDto) {
         return Estrela.builder()
@@ -20,14 +28,7 @@ public class EstrelaMapper {
     }
 
     public String getCor(Character classe) {
-        return switch (classe) {
-            case 'A' -> getStrategy(new ClasseAStrategyImpl(), classe);
-            case 'M' -> getStrategy(new ClasseMStrategyImpl(), classe);
-            default -> getStrategy(new ClasseGStrategyImpl(), classe);
-        };
+        return strategyMap.get(classe.toString()).getCor(classe);
     }
 
-    public String getStrategy(EstrelaCorStrategy estrelaCorStrategy, Character classe) {
-        return estrelaCorStrategy.getCor(classe);
-    }
 }

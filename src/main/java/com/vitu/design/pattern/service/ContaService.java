@@ -1,4 +1,4 @@
-package com.vitu.design.pattern.services;
+package com.vitu.design.pattern.service;
 
 import com.vitu.design.pattern.domain.onetomany.biderecional.Conta;
 import com.vitu.design.pattern.domain.onetomany.biderecional.Historico;
